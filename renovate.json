@@ -15,7 +15,7 @@
             "module \"cilium\" \\{\\s*source\\s*=\\s*\".*\"\\s*cilium_version\\s*=\\s*\"(?<currentValue>.*?)\""
           ],
           "datasource": "github-tags",
-          "depNameTemplate": "cilium/cilium", // Assuming the Cilium repository on GitHub
+          "depNameTemplate": "cilium/cilium",
           "extractVersion": "^v?(?<version>.*)$"
         }
       ]
