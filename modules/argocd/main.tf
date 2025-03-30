@@ -8,10 +8,13 @@ terraform {
 }
 
 provider "kubectl" {
-  config_path    = "/home/ken/.kube/config"
+  config_path    = var.kube_config
   config_context = var.kube_context
 }
 
+variable "kube_config" {
+  type = string
+}
 variable "argocd_version" {
   type = string
 }

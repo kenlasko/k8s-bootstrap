@@ -15,31 +15,37 @@ OpenTofu/Terraform must be installed on the workstation along with `kubectl` and
 
 The repo expects that Kubernetes manifests for the cluster have been cloned to the same filesystem as OpenTofu/Terraform. In addition, you will have to do the following:
 1. Modify the folder references in [kubernetes.tf](kubernetes.tf) to match the folder name(s) for your cluster manifests
-2. Modify the `.kubeconfig` references to match the available contexts
-3. Change the home folder references (currently `/home/ken`)
+2. Modify the `kube_env` list of clusters in [kubernetes.tf](kubernetes.tf) to match your own. This should map to the root folder of the repository containing all the manifests as well as the name of the contexts in your `.kubeconfig` file. The two should match. (IE. folder = `~/k8s`, kubecontext = `k8s`)
+3. Change the `kube_config` path to match your own
 4. Make sure the [Sealed Secret default key](modules/sealed-secrets/main.tf) is available outside the repo for import
 
 # Installation
 1. Clone the repo into a folder named something like `terraform`
 ```
-git clone https:// terraform
+git clone https://github.com/kenlasko/k8s-bootstrap.git terraform
 ```
 2. Setup an alias for `tf` for your chosen application (either OpenTofu or Terraform)
 ```
 echo "alias tf='tofu'" >> ~/.bashrc   # or terraform
 source ~/.bashrc
 ```
-3. Initialize the application
+3. Add the workspaces to match the `kube_env` references in [kubernetes.tf](kubernetes.tf)
+```
+tf workspace new home
+tf workspace new cloud
+tf workspace new lab
+```
+4. Initialize the application
 ```
 cd ~/terraform
 tf init
 ```
-4. Select the appropriate workspace
+5. Select the appropriate workspace
 ```
 tf workspace select lab
 ```
-4. Spin up the new cluster
-5. When the new cluster responds to `kubectl get nodes`, run
+6. Spin up the new cluster
+7. When the new cluster responds to `kubectl get nodes`, run
 ```
 tf apply
 ```

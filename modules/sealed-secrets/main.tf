@@ -8,10 +8,13 @@ terraform {
 }
 
 provider "kubectl" {
-  config_path    = "~/.kube/config"
+  config_path    = var.kube_config
   config_context = var.kube_context
 }
 
+variable "kube_config" {
+  type = string
+}
 variable "sealed_secrets_version" {
   type = string
 }
