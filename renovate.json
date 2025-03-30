@@ -6,7 +6,19 @@
   "packageRules": [
     {
       "matchDatasources": ["terraform-provider", "terraform-module"],
-      "registryUrls": ["https://registry.opentofu.org"]
+      "registryUrls": ["https://registry.opentofu.org"],
+      "matchDepName": "cilium",
+      "regexManagers": [
+        {
+          "fileMatch": ["\\.tf$"],
+          "matchStrings": [
+            "module \"cilium\" \\{\\s*source\\s*=\\s*\".*\"\\s*cilium_version\\s*=\\s*\"(?<currentValue>.*?)\""
+          ],
+          "datasource": "github-tags",
+          "depNameTemplate": "cilium/cilium", // Assuming the Cilium repository on GitHub
+          "extractVersion": "^v?(?<version>.*)$"
+        }
+      ]
     }
   ]
 }
