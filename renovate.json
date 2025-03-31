@@ -14,9 +14,9 @@
           "matchStrings": [
             "module \"cilium\" \\{\\s*source\\s*=\\s*\".*\"\\s*cilium_version\\s*=\\s*\"(?<currentValue>.*?)\""
           ],
-          "datasource": "github-tags",
+          "datasourceTemplate": "github-tags",
           "depNameTemplate": "cilium/cilium",
-          "extractVersion": "^v?(?<version>.*)$"
+          "extractVersionTemplate": "^v?(?<version>.*)$"
         }
       ]
     }
