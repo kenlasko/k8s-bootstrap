@@ -7,7 +7,7 @@
     {
       "matchDatasources": ["terraform-provider", "terraform-module"],
       "registryUrls": ["https://registry.opentofu.org"],
-      "matchDepName": "cilium",
+      "matchDepNames": "cilium",
       "regexManagers": [
         {
           "fileMatch": ["\\.tf$"],
