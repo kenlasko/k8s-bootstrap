@@ -15,6 +15,15 @@
       ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "cilium/cilium"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["^kubernetes.tf$"],
+      "matchStrings": [
+        "modules\/sealed-secrets\"\\n\\s*software_version\\s*=\\s*\"(?<currentValue>.*?)\""
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "bitnami-labs/sealed-secrets"
     }
   ]
 }
