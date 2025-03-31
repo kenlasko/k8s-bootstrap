@@ -15,7 +15,7 @@
       "customManagers": [
         {
           "customType": "regex",
-          "files": ["kubernetes.tf"],
+          "fileMatch": ["kubernetes.tf"],
           "matchStrings": [
             "module \"cilium\" {.*?software_version\\s*=\\s*\"(?<currentValue>.*?)\""
           ],
@@ -24,7 +24,7 @@
         },
         {
           "customType": "regex",
-          "files": ["kubernetes.tf"],
+          "fileMatch": ["kubernetes.tf"],
           "matchStrings": [
             "module \"sealed-secrets\" {.*?software_version\\s*=\\s*\"(?<currentValue>.*?)\""
           ],
@@ -33,7 +33,7 @@
         },
         {
           "customType": "regex",
-          "files": ["kubernetes.tf"],
+          "fileMatch": ["kubernetes.tf"],
           "matchStrings": [
             "module \"cert-manager\" {.*?software_version\\s*=\\s*\"(?<currentValue>.*?)\""
           ],
@@ -42,7 +42,7 @@
         },
         {
           "customType": "regex",
-          "files": ["kubernetes.tf"],
+          "fileMatch": ["kubernetes.tf"],
           "matchStrings": [
             "module \"argocd\" {.*?software_version\\s*=\\s*\"(?<currentValue>.*?)\""
           ],
