@@ -3,6 +3,10 @@
   "extends": [
     "config:recommended"
   ],
+  "enabledManagers": [
+    "terraform",
+    "custom.regex"
+  ],
   "packageRules": [
     {
       "matchDatasources": ["terraform-provider", "terraform-module"],
