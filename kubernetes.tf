@@ -49,7 +49,7 @@ provider "kubectl" {
 
 module "cilium" {
   source                  = "./modules/cilium"
-  cilium_version        = "1.17.2"
+  cilium_version          = "1.17.2"
   kube_env                = var.kube_env[terraform.workspace]
   kube_context            = "omni-${terraform.workspace}"
   kube_config             = var.kube_config

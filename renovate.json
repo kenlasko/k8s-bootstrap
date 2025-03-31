@@ -16,7 +16,7 @@
           "customType": "regex",
           "fileMatch": ["kubernetes.tf"],
           "matchStrings": [
-            "cilium_version\\s*=\\s*\"(?<currentValue>.*?)\"\\n"
+            "cilium_version\\s*=\\s*\"(?<currentValue>.*?)\""
           ],
           "datasourceTemplate": "github-releases",
           "depNameTemplate": "cilium/cilium"
