@@ -15,7 +15,7 @@ provider "kubectl" {
 variable "kube_config" {
   type = string
 }
-variable "sealed_secrets_version" {
+variable "software_version" {
   type = string
 }
 variable "kube_env" {
@@ -44,7 +44,7 @@ resource "helm_release" "sealed-secrets" {
   name              = "sealed-secrets"
   repository        = "oci://registry-1.docker.io/bitnamicharts"
   chart             = "sealed-secrets"
-  version           = var.sealed_secrets_version
+  version           = var.software_version
   namespace         = "kube-system"
   create_namespace  = false
   values            = [file("${var.manifests_dir}/values.yaml")]

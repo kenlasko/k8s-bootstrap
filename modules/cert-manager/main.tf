@@ -15,7 +15,7 @@ provider "kubectl" {
 variable "kube_config" {
   type = string
 }
-variable "cert_manager_version" {
+variable "software_version" {
   type = string
 }
 variable "kube_env" {
@@ -38,7 +38,7 @@ resource "helm_release" "cert-manager" {
   name              = "cert-manager"
   repository        = "https://charts.jetstack.io"
   chart             = "cert-manager"
-  version           = var.cert_manager_version
+  version           = var.software_version
   namespace         = "cert-manager"
   create_namespace  = true
   values            = [file("${var.manifests_dir}/values.yaml")]

@@ -15,7 +15,7 @@ provider "kubectl" {
 variable "kube_config" {
   type = string
 }
-variable "cilium_version" {
+variable "software_version" {
   type = string
 }
 variable "kube_env" {
@@ -32,7 +32,7 @@ resource "helm_release" "cilium" {
   name              = "cilium"
   repository        = "https://helm.cilium.io/"
   chart             = "cilium"
-  version           = var.cilium_version
+  version           = var.software_version
   namespace         = "cilium"
   create_namespace  = true
   values            = [file("${var.manifests_dir}/values.yaml")]

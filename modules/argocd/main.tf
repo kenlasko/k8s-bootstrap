@@ -15,7 +15,7 @@ provider "kubectl" {
 variable "kube_config" {
   type = string
 }
-variable "argocd_version" {
+variable "software_version" {
   type = string
 }
 variable "kube_env" {
@@ -51,7 +51,7 @@ resource "helm_release" "argocd" {
   name              = "argocd"
   repository        = "https://argoproj.github.io/argo-helm"
   chart             = "argo-cd"
-  version           = var.argocd_version
+  version           = var.software_version
   namespace         = "argocd"
   create_namespace  = true
   values            = [file("${var.manifests_dir}/values.yaml")]

@@ -14,13 +14,36 @@
       "matchDepNames": "cilium",
       "customManagers": [
         {
-          "fileMatch": ["\\.tf$"],
+          "files": ["kubernetes.tf"],
           "matchStrings": [
-            "module \"cilium\" \\{\\s*source\\s*=\\s*\".*\"\\s*cilium_version\\s*=\\s*\"(?<currentValue>.*?)\""
+            "module \"cilium\" {.*?software_version\\s*=\\s*\"(?<currentValue>.*?)\""
           ],
           "datasourceTemplate": "github-tags",
-          "depNameTemplate": "cilium/cilium",
-          "extractVersionTemplate": "^v?(?<version>.*)$"
+          "depNameTemplate": "cilium/cilium"
+        },
+        {
+          "files": ["kubernetes.tf"],
+          "matchStrings": [
+            "module \"sealed-secrets\" {.*?software_version\\s*=\\s*\"(?<currentValue>.*?)\""
+          ],
+          "datasourceTemplate": "github-tags",
+          "depNameTemplate": "bitnami-labs/sealed-secrets"
+        },
+        {
+          "files": ["kubernetes.tf"],
+          "matchStrings": [
+            "module \"cert-manager\" {.*?software_version\\s*=\\s*\"(?<currentValue>.*?)\""
+          ],
+          "datasourceTemplate": "github-tags",
+          "depNameTemplate": "cert-manager/cert-manager"
+        },
+        {
+          "files": ["kubernetes.tf"],
+          "matchStrings": [
+            "module \"argocd\" {.*?software_version\\s*=\\s*\"(?<currentValue>.*?)\""
+          ],
+          "datasourceTemplate": "github-tags",
+          "depNameTemplate": "argoproj/argo-cd"
         }
       ]
     }
