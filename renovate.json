@@ -4,23 +4,17 @@
     "config:recommended"
   ],
   "enabledManagers": [
-    "terraform",
     "custom.regex"
   ],
-  "packageRules": [
+  "customManagers": [
     {
-      "matchDatasources": ["terraform-provider", "terraform-module"],
-      "registryUrls": ["https://registry.opentofu.org"],
-      "customManagers": [
-        {
-          "customType": "regex",
-          "fileMatch": ["^kubernetes.tf$"],
-          "matchStrings": [
-            "cilium_version\\s*=\\s*\"(?<currentValue>.*?)\""
-          ],
-          "datasourceTemplate": "github-releases"
-        }
-      ]
+      "customType": "regex",
+      "fileMatch": ["^kubernetes.tf$"],
+      "matchStrings": [
+        "cilium_version\\s*=\\s*\"(?<currentValue>.*?)\""
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "cilium/cilium"
     }
   ]
 }
