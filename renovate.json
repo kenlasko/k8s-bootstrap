@@ -8,7 +8,7 @@
       "matchDatasources": ["terraform-provider", "terraform-module"],
       "registryUrls": ["https://registry.opentofu.org"],
       "matchDepNames": "cilium",
-      "regexManagers": [
+      "customManagers": [
         {
           "fileMatch": ["\\.tf$"],
           "matchStrings": [
