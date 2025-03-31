@@ -14,6 +14,7 @@
       "matchDepNames": "cilium",
       "customManagers": [
         {
+          "customType": "regex",
           "files": ["kubernetes.tf"],
           "matchStrings": [
             "module \"cilium\" {.*?software_version\\s*=\\s*\"(?<currentValue>.*?)\""
@@ -22,6 +23,7 @@
           "depNameTemplate": "cilium/cilium"
         },
         {
+          "customType": "regex",
           "files": ["kubernetes.tf"],
           "matchStrings": [
             "module \"sealed-secrets\" {.*?software_version\\s*=\\s*\"(?<currentValue>.*?)\""
@@ -30,6 +32,7 @@
           "depNameTemplate": "bitnami-labs/sealed-secrets"
         },
         {
+          "customType": "regex",
           "files": ["kubernetes.tf"],
           "matchStrings": [
             "module \"cert-manager\" {.*?software_version\\s*=\\s*\"(?<currentValue>.*?)\""
@@ -38,6 +41,7 @@
           "depNameTemplate": "cert-manager/cert-manager"
         },
         {
+          "customType": "regex",
           "files": ["kubernetes.tf"],
           "matchStrings": [
             "module \"argocd\" {.*?software_version\\s*=\\s*\"(?<currentValue>.*?)\""
