@@ -17,7 +17,7 @@
           "customType": "regex",
           "fileMatch": ["kubernetes.tf"],
           "matchStrings": [
-            "modules\/cilium\"\n\s*software_version\s*=\s*\"(<currentValue>)\""
+            "modules\/cilium\"\n\s*software_version\s*=\s*\"(?<currentValue>.*)\""
           ],
           "datasourceTemplate": "github-tags",
           "depNameTemplate": "cilium/cilium"
@@ -26,7 +26,7 @@
           "customType": "regex",
           "fileMatch": ["kubernetes.tf"],
           "matchStrings": [
-            "modules\/cilium\"\n\s*software_version\s*=\s*\"(<currentValue>)\""
+            "modules\/cilium\"\n\s*software_version\s*=\s*\"(?<currentValue>.*)\""
           ],
           "datasourceTemplate": "github-tags",
           "depNameTemplate": "bitnami-labs/sealed-secrets"
@@ -35,7 +35,7 @@
           "customType": "regex",
           "fileMatch": ["kubernetes.tf"],
           "matchStrings": [
-            "modules\/cilium\"\n\s*software_version\s*=\s*\"(<currentValue>)\""
+            "modules\/cilium\"\n\s*software_version\s*=\s*\"(?<currentValue>.*)\""
           ],
           "datasourceTemplate": "github-tags",
           "depNameTemplate": "cert-manager/cert-manager"
@@ -44,7 +44,7 @@
           "customType": "regex",
           "fileMatch": ["kubernetes.tf"],
           "matchStrings": [
-            "module \"argocd\" {.*?software_version\\s*=\\s*\"(<currentValue>)\""
+            "modules\/cilium\"\n\s*software_version\s*=\s*\"(?<currentValue>.*)\""
           ],
           "datasourceTemplate": "github-tags",
           "depNameTemplate": "argoproj/argo-cd"
