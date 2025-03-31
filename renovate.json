@@ -14,12 +14,11 @@
       "customManagers": [
         {
           "customType": "regex",
-          "fileMatch": ["kubernetes.tf"],
+          "fileMatch": ["^kubernetes.tf$"],
           "matchStrings": [
             "cilium_version\\s*=\\s*\"(?<currentValue>.*?)\""
           ],
-          "datasourceTemplate": "github-releases",
-          "depNameTemplate": "cilium/cilium"
+          "datasourceTemplate": "github-releases"
         }
       ]
     }
