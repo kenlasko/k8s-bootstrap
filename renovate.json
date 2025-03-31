@@ -1,7 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":rebaseStalePrs"
   ],
   "enabledManagers": [
     "terraform",
@@ -48,7 +49,10 @@
   "packageRules": [
     {
       "matchDatasources": ["terraform-provider", "terraform-module"],
-      "registryUrls": ["https://registry.opentofu.org"]
+      "registryUrls": ["https://registry.opentofu.org"],
+      "automerge": true,
+      "automergeType": "branch",
+      "ignoreTests": true
     }
   ]
 }
