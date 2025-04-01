@@ -15,8 +15,9 @@
       "matchStrings": [
         "modules\/cilium\"\\n\\s*software_version\\s*=\\s*\"(?<currentValue>.*?)\""
       ],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "cilium/cilium"
+      "datasourceTemplate": "helm",
+      "registryUrlTemplate": "https://helm.cilium.io/",
+      "depNameTemplate": "cilium"
     },
     {
       "customType": "regex",
@@ -24,8 +25,9 @@
       "matchStrings": [
         "modules\/sealed-secrets\"\\n\\s*software_version\\s*=\\s*\"(?<currentValue>.*?)\""
       ],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "bitnami-labs/sealed-secrets"
+      "datasourceTemplate": "helm",
+      "registryUrlTemplate": "oci://registry-1.docker.io/bitnamicharts",
+      "depNameTemplate": "sealed-secrets"
     },
     {
       "customType": "regex",
@@ -33,8 +35,9 @@
       "matchStrings": [
         "modules\/cert-manager\"\\n\\s*software_version\\s*=\\s*\"(?<currentValue>.*?)\""
       ],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "cert-manager/cert-manager"
+      "datasourceTemplate": "helm",
+      "registryUrlTemplate": "https://charts.jetstack.io",
+      "depNameTemplate": "cert-manager"
     },
     {
       "customType": "regex",
@@ -51,6 +54,7 @@
     {
       "matchDatasources": ["terraform-provider", "terraform-module"],
       "registryUrls": ["https://registry.opentofu.org"],
+      "matchManagers": ["custom.regex"],
       "automerge": true,
       "automergeType": "branch",
       "ignoreTests": true
