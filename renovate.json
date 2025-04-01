@@ -52,7 +52,7 @@
   ],
   "packageRules": [
     {
-      "matchDatasources": ["terraform-provider", "terraform-module"],
+      "matchDatasources": ["terraform-provider", "terraform-module", "docker", "helm"],
       "registryUrls": ["https://registry.opentofu.org"],
       "matchManagers": ["terraform","custom.regex"],
       "automerge": true,
