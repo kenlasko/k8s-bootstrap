@@ -58,6 +58,13 @@
       "automerge": true,
       "automergeType": "branch",
       "ignoreTests": true
+    },
+    {
+      "matchDatasources": ["docker", "regex"],
+      "matchManagers": ["custom.regex"],
+      "automerge": true,
+      "automergeType": "branch",
+      "ignoreTests": true
     }
   ]
 }
