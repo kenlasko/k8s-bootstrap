@@ -42,8 +42,9 @@
       "matchStrings": [
         "modules\/argocd\"\\n\\s*software_version\\s*=\\s*\"(?<currentValue>.*?)\""
       ],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "argoproj/argo-cd"
+      "datasourceTemplate": "helm",
+      "registryUrlTemplate": "https://argoproj.github.io/argo-helm",
+      "depNameTemplate": "argo-cd"
     }
   ],
   "packageRules": [
