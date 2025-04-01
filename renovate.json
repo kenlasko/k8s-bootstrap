@@ -52,9 +52,8 @@
   ],
   "packageRules": [
     {
-      "matchDatasources": ["terraform-provider", "terraform-module"],
       "registryUrls": ["https://registry.opentofu.org"],
-      "matchManagers": ["custom.regex"],
+      "matchManagers": ["terraform","custom.regex"],
       "automerge": true,
       "automergeType": "branch",
       "ignoreTests": true
