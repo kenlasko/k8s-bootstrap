@@ -49,7 +49,7 @@ provider "kubectl" {
 
 module "cilium" {
   source                  = "./modules/cilium"
-  software_version          = "1.17.2"
+  software_version          = "1.17.1"
   kube_env                = var.kube_env[terraform.workspace]
   kube_context            = "omni-${terraform.workspace}"
   kube_config             = var.kube_config
@@ -58,7 +58,7 @@ module "cilium" {
 
 module "sealed-secrets" {
   source                  = "./modules/sealed-secrets"
-  software_version        = "2.5.8"
+  software_version        = "2.5.7"
   kube_env                = var.kube_env[terraform.workspace]
   kube_context            = "omni-${terraform.workspace}"
   kube_config             = var.kube_config
@@ -68,7 +68,7 @@ module "sealed-secrets" {
 
 module "cert-manager" {
   source                  = "./modules/cert-manager"
-  software_version        = "1.17.1"
+  software_version        = "1.17.0"
   kube_env                = var.kube_env[terraform.workspace]
   kube_context            = "omni-${terraform.workspace}"
   kube_config             = var.kube_config
