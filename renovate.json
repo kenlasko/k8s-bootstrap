@@ -60,7 +60,7 @@
       "ignoreTests": true
     },
     {
-      "matchDatasources": ["docker", "regex"],
+      "matchDatasources": ["docker", "helm"],
       "matchManagers": ["custom.regex"],
       "automerge": true,
       "automergeType": "branch",
