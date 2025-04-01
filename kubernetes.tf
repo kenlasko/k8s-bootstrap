@@ -48,40 +48,40 @@ provider "kubectl" {
 }
 
 module "cilium" {
-  source                  = "./modules/cilium"
-  software_version          = "1.17.1"
-  kube_env                = var.kube_env[terraform.workspace]
-  kube_context            = "omni-${terraform.workspace}"
-  kube_config             = var.kube_config
-  manifests_dir           = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/network/cilium"
+  source                = "./modules/cilium"
+  software_version      = "1.17.1"
+  kube_env              = var.kube_env[terraform.workspace]
+  kube_context          = "omni-${terraform.workspace}"
+  kube_config           = var.kube_config
+  manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/network/cilium"
 }
 
 module "sealed-secrets" {
-  source                  = "./modules/sealed-secrets"
-  software_version        = "2.5.8"
-  kube_env                = var.kube_env[terraform.workspace]
-  kube_context            = "omni-${terraform.workspace}"
-  kube_config             = var.kube_config
-  manifests_dir           = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/system/sealed-secrets"
-  cilium_status           = module.cilium.status   # Will only start when Cilium is ready
+  source                = "./modules/sealed-secrets"
+  software_version      = "2.5.8"
+  kube_env              = var.kube_env[terraform.workspace]
+  kube_context          = "omni-${terraform.workspace}"
+  kube_config           = var.kube_config
+  manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/system/sealed-secrets"
+  cilium_status         = module.cilium.status   # Will only start when Cilium is ready
 }
 
 module "cert-manager" {
-  source                  = "./modules/cert-manager"
-  software_version        = "v1.17.1"
-  kube_env                = var.kube_env[terraform.workspace]
-  kube_context            = "omni-${terraform.workspace}"
-  kube_config             = var.kube_config
-  manifests_dir           = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/system/cert-manager"
-  sealed_secrets_status   = module.sealed-secrets.status  # Will only start when Sealed Secrets is ready
+  source                = "./modules/cert-manager"
+  software_version      = "v1.17.1"
+  kube_env              = var.kube_env[terraform.workspace]
+  kube_context          = "omni-${terraform.workspace}"
+  kube_config           = var.kube_config
+  manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/system/cert-manager"
+  sealed_secrets_status = module.sealed-secrets.status  # Will only start when Sealed Secrets is ready
 }
 
 module "argocd" {
-  source                  = "./modules/argocd"
-  software_version        = "7.8.18"
-  kube_env                = var.kube_env[terraform.workspace]
-  kube_context            = "omni-${terraform.workspace}"
-  kube_config             = var.kube_config
-  manifests_dir           = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/argocd"
-  sealed_secrets_status   = module.sealed-secrets.status  # Will only start when Sealed Secrets is ready
+  source                = "./modules/argocd"
+  software_version      = "7.8.18"
+  kube_env              = var.kube_env[terraform.workspace]
+  kube_context          = "omni-${terraform.workspace}"
+  kube_config           = var.kube_config
+  manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/argocd"
+  sealed_secrets_status = module.sealed-secrets.status  # Will only start when Sealed Secrets is ready
 }
