@@ -25,7 +25,7 @@
       "matchStrings": [
         "modules\/sealed-secrets\"\\n\\s*software_version\\s*=\\s*\"(?<currentValue>.*?)\""
       ],
-      "datasourceTemplate": "helm",
+      "datasourceTemplate": "docker",
       "registryUrlTemplate": "oci://registry-1.docker.io/bitnamicharts",
       "depNameTemplate": "sealed-secrets"
     },
