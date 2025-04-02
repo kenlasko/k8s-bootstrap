@@ -53,7 +53,7 @@
       "customType": "regex",
       "fileMatch": ["^modules/cilium.tf$"],
       "matchStrings": [
-        "\\s*type\\s*=\\s*string\\n\\s*default\\s*=\\s*\"(?<currentValue>.*?)\""
+        "\\s*default\\s*=\\s*\"(?<currentValue>.*?)\""
       ],
       "datasourceTemplate": "github-releases",
       "registryUrlTemplate": "https://github.com/kubernetes-sigs/gateway-api.git",
