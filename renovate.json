@@ -12,7 +12,7 @@
     {
       "matchHost": "github.com",
       "hostType": "github",
-      "token": "{{ secrets.GITHUB_PAT }}"
+      "token": "{{ secrets.RENOVATE_GITHUB_COM_TOKEN }}"
     }
   ],
   "customManagers": [
@@ -63,8 +63,8 @@
         "github.com\/kubernetes-sigs\/gateway-api\/releases\/download\/(?<currentValue>.*?)\/experimental-install"
       ],
       "datasourceTemplate": "github-releases",
-      "registryUrlTemplate": "https://github.com/kubernetes-sigs/gateway-api.git",
-      "packageNameTemplate": "gateway-api"
+      "registryUrlTemplate": "https://github.com/kubernetes-sigs/gateway-api",
+      "packageNameTemplate": "kubernetes-sigs/gateway-api"
     }
   ],
   "packageRules": [
