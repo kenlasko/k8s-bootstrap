@@ -51,7 +51,7 @@
     },
     {
       "customType": "regex",
-      "fileMatch": ["^modules/cilium.tf$"],
+      "fileMatch": ["cilium.tf$"],
       "matchStrings": [
         "github.com\/kubernetes-sigs\/gateway-api\/releases\/download\/(?<currentValue>.*?)\/experimental-install"
       ],
