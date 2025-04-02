@@ -48,6 +48,15 @@
       "datasourceTemplate": "helm",
       "registryUrlTemplate": "https://argoproj.github.io/argo-helm",
       "depNameTemplate": "argo-cd"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["^modules/cilium.tf$"],
+      "matchStrings": [
+        "variable\\s\"gateway_api_crd_version\".*default\\s=\\s\"(?<currentValue>.*?)\""
+      ],
+      "datasourceTemplate": "github-releases",
+      "registryUrlTemplate": "https://github.com/kubernetes-sigs/gateway-api.git"
     }
   ],
   "packageRules": [
