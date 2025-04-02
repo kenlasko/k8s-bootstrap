@@ -57,7 +57,7 @@
       ],
       "datasourceTemplate": "github-releases",
       "registryUrlTemplate": "https://github.com/kubernetes-sigs/gateway-api.git",
-      "depNameTemplate": "gateway-api-crd"
+      "depNameTemplate": "gateway-api"
     }
   ],
   "packageRules": [
