@@ -63,8 +63,8 @@
         "github.com\/kubernetes-sigs\/gateway-api\/releases\/download\/(?<currentValue>.*?)\/experimental-install"
       ],
       "datasourceTemplate": "github-releases",
-      "registryUrlTemplate": "https://github.com/kubernetes-sigs/gateway-api",
-      "depNameTemplate": "gateway-api"
+      "registryUrlTemplate": "https://github.com/kubernetes-sigs/gateway-api.git",
+      "packageNameTemplate": "gateway-api"
     }
   ],
   "packageRules": [
