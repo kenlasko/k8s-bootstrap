@@ -8,6 +8,13 @@
     "terraform",
     "custom.regex"
   ],
+  "hostRules": [
+    {
+      "matchHost": "github.com",
+      "hostType": "github",
+      "token": "{{ secrets.GITHUB_PAT }}"
+    }
+  ],
   "customManagers": [
     {
       "customType": "regex",
