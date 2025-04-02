@@ -30,7 +30,7 @@ variable "kube_context" {
 
 # Data source to fetch the Gateway API CRD YAML
 data "http" "gateway_api_crd" {
-  url = "https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.0/experimental-install.yaml"
+  url = "https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.1/experimental-install.yaml"
 }
 
 # Resource to apply the Gateway API CRDs
