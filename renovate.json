@@ -56,7 +56,8 @@
         "variable\\s\"gateway_api_crd_version\".*default\\s=\\s\"(?<currentValue>.*?)\""
       ],
       "datasourceTemplate": "github-releases",
-      "registryUrlTemplate": "https://github.com/kubernetes-sigs/gateway-api.git"
+      "registryUrlTemplate": "https://github.com/kubernetes-sigs/gateway-api.git",
+      "depNameTemplate": "gateway-api-crd"
     }
   ],
   "packageRules": [
