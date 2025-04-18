@@ -1,4 +1,4 @@
-# Introduction
+8# Introduction
 This repo is used to bootstrap my [Omni/Talos](https://github.com/kenlasko/omni-public) Kubernetes clusters. It replaces Ansible, which was much harder to keep working. 
 
 It uses [OpenTofu](https://opentofu.org/) which is an open-source version of Terraform. At the time of writing, this repo works with either OpenTofu or Terraform, but was tested on OpenTofu.
@@ -44,7 +44,7 @@ tf init
 ```
 tf workspace select lab
 ```
-6. Spin up the new cluster
+6. [Spin up the new cluster](https://github.com/kenlasko/omni)
 7. When the new cluster responds to `kubectl get nodes`, run
 ```
 tf apply
