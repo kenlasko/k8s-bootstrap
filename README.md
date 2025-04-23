@@ -10,7 +10,8 @@ It is a very opinionated repo designed to get my cluster to the point where Argo
 
 It is configured to work with my multiple clusters (`home`, `cloud` and `lab`) using [Workspaces](https://opentofu.org/docs/cli/workspaces/).
 
-## Related Repositories:
+## Related Repositories
+Links to my other repositories mentioned or used in this repo:
 - [NetbootXYZ](https://github.com/kenlasko/docker-rpi1/tree/main/netbootxyz): Simplified PXE boot setup for Omni-managed Talos nodes.
 - [K8s Cluster Configuration](https://github.com/kenlasko/k8s): Manages Kubernetes cluster manifests and workloads.
 - [NixOS](https://github.com/kenlasko/nixos-wsl): A declarative OS modified to support my Kubernetes cluster
