@@ -28,32 +28,32 @@ The repo expects that Kubernetes manifests for the cluster have been cloned to t
 
 # Installation
 1. Clone the repo into a folder named something like `terraform`
-```
+```bash
 git clone https://github.com/kenlasko/k8s-bootstrap.git terraform
 ```
 2. Setup an alias for `tf` for your chosen application (either OpenTofu or Terraform)
-```
+```bash
 echo "alias tf='tofu'" >> ~/.bashrc   # or terraform
 source ~/.bashrc
 ```
 3. Add the workspaces to match the `kube_env` references in [kubernetes.tf](kubernetes.tf)
-```
+```bash
 tf workspace new home
 tf workspace new cloud
 tf workspace new lab
 ```
 4. Initialize the application
-```
+```bash
 cd ~/terraform
 tf init
 ```
 5. Select the appropriate workspace
-```
+```bash
 tf workspace select lab
 ```
 6. [Spin up the new cluster](https://github.com/kenlasko/omni)
 7. When the new cluster responds to `kubectl get nodes`, run
-```
+```bash
 tf apply
 ```
 and type `yes` when ready.
@@ -62,6 +62,6 @@ and type `yes` when ready.
 # Tips & Tricks
 ## Logging
 To turn on verbose logging:
-```
+```bash
 export TF_LOG="DEBUG"
 ```
