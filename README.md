@@ -1,4 +1,4 @@
-8# Introduction
+# Introduction
 This repo is used to bootstrap my [Omni/Talos](https://github.com/kenlasko/omni-public) Kubernetes clusters. It replaces Ansible, which was much harder to keep working. 
 
 It uses [OpenTofu](https://opentofu.org/) which is an open-source version of Terraform. At the time of writing, this repo works with either OpenTofu or Terraform, but was tested on OpenTofu.
@@ -9,6 +9,12 @@ It is a very opinionated repo designed to get my cluster to the point where Argo
 - [Cert-Manager](https://github.com/cert-manager/cert-manager) for certificate management (requires Sealed Secrets)
 
 It is configured to work with my multiple clusters (`home`, `cloud` and `lab`) using [Workspaces](https://opentofu.org/docs/cli/workspaces/).
+
+## Related Repositories:
+- [NetbootXYZ](https://github.com/kenlasko/docker-rpi1/tree/main/netbootxyz): Simplified PXE boot setup for Omni-managed Talos nodes.
+- [K8s Cluster Configuration](https://github.com/kenlasko/k8s): Manages Kubernetes cluster manifests and workloads.
+- [NixOS](https://github.com/kenlasko/nixos-wsl): A declarative OS modified to support my Kubernetes cluster
+- [Omni](https://github.com/kenlasko/omni): Creates and manages the Kubernetes clusters.
 
 # Prerequisites
 OpenTofu/Terraform must be installed on the workstation along with `kubectl` and an available kubeconfig file in `/home/USERNAME/.kube/config`
