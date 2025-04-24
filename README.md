@@ -3,7 +3,7 @@ This repo is used to bootstrap my [Omni/Talos](https://github.com/kenlasko/omni-
 
 It uses [OpenTofu](https://opentofu.org/) which is an open-source version of Terraform. At the time of writing, this repo works with either OpenTofu or Terraform, but was tested on OpenTofu.
 
-It is a very opinionated repo designed to get my cluster to the point where ArgoCD can take over and install all applications. For ArgoCD to function, several other apps have to be running first:
+It is a very opinionated repo designed to get a new Kubernetes cluster to the point where ArgoCD can take over and install all applications. For ArgoCD to function, several other apps have to be running first:
 - [Cilium](https://github.com/cilium/cilium) for networking
 - [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets) for secret management (requires Cilium)
 - [Cert-Manager](https://github.com/cert-manager/cert-manager) for certificate management (requires Sealed Secrets)
@@ -21,10 +21,10 @@ Links to my other repositories mentioned or used in this repo:
 OpenTofu/Terraform must be installed on the workstation along with `kubectl` and an available kubeconfig file in `/home/USERNAME/.kube/config`
 
 The repo expects that Kubernetes manifests for the cluster have been cloned to the same filesystem as OpenTofu/Terraform. In addition, you will have to do the following:
-1. Modify the folder references in [kubernetes.tf](kubernetes.tf) to match the folder name(s) for your cluster manifests
-2. Modify the `kube_env` list of clusters in [kubernetes.tf](kubernetes.tf) to match your own. This should map to the root folder of the repository containing all the manifests as well as the name of the contexts in your `.kubeconfig` file. The two should match. (IE. folder = `~/k8s`, kubecontext = `k8s`)
+1. Modify the folder references in [kubernetes.tf](kubernetes.tf) to match the folder name(s) for your cluster manifests. If you are using the same format as [my Kubernetes cluster](https://github.com/kenlasko/k8s), you shouldn't need to change anything.
+2. Modify the `kube_env` list of clusters in [kubernetes.tf](kubernetes.tf) to match your own. This should map to the root folder of the repository containing all the manifests as well as the name of the contexts in your `.kubeconfig` file. For example, my `.kubeconfig` file uses the context name `home` for the manifests stored in the folder `k8s`.
 3. Change the `kube_config` path to match your own
-4. Make sure the [Sealed Secret default key](modules/sealed-secrets/main.tf) is available outside the repo for import
+4. Make sure the [Sealed Secret default key](modules/sealed-secrets/main.tf) (line 35) is available outside the repo for import
 
 # Installation
 1. Clone the repo into a folder named something like `terraform`
