@@ -68,7 +68,7 @@ module "sealed-secrets" {
 
 module "cert-manager" {
   source                = "./modules/cert-manager"
-  software_version      = "v1.17.1"
+  software_version      = "v1.17.2"
   kube_env              = var.kube_env[terraform.workspace]
   kube_context          = "omni-${terraform.workspace}"
   kube_config           = var.kube_config
