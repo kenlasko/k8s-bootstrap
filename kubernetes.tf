@@ -78,7 +78,7 @@ module "cert-manager" {
 
 module "argocd" {
   source                = "./modules/argocd"
-  software_version      = "8.0.3"
+  software_version      = "8.0.4"
   kube_env              = var.kube_env[terraform.workspace]
   kube_context          = "omni-${terraform.workspace}"
   kube_config           = var.kube_config
