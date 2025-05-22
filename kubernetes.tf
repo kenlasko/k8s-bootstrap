@@ -82,6 +82,6 @@ module "argocd" {
   kube_env              = var.kube_env[terraform.workspace]
   kube_context          = "omni-${terraform.workspace}"
   kube_config           = var.kube_config
-  manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/argocd"
+  manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/argocd"
   sealed_secrets_status = module.sealed-secrets.status  # Will only start when Sealed Secrets is ready
 }
