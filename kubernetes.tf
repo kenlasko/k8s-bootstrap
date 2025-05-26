@@ -76,6 +76,7 @@ module "cert-manager" {
 }
 
 module "redis" {
+  count                 = terraform.workspace == "cloud" ? 0 : 1
   source                = "./modules/redis"
   software_version      = "8.0.1"
   kube_env              = var.kube_env[terraform.workspace]
@@ -83,7 +84,6 @@ module "redis" {
   kube_config           = var.kube_config
   manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/database/redis"
   sealed_secrets_status = module.sealed-secrets.status  # Will only start when Sealed Secrets is ready
-  count                 = terraform.workspace != "cloud" ? 1 : 0  # Skip Redis in cloud workspace
 }
 
 module "argocd" {

@@ -7,11 +7,6 @@ terraform {
   }
 }
 
-provider "kubectl" {
-  config_path    = var.kube_config
-  config_context = var.kube_context
-}
-
 variable "kube_config" {
   type = string
 }
