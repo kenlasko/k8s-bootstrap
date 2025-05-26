@@ -29,13 +29,6 @@ variable "kube_env" {
   }
 }
 
-variable "enabled" {
-  description = "Set to false to disable a module"
-  type        = bool
-  default     = true
-}
-
-
 provider "kubernetes" {
   config_path    = var.kube_config
   config_context = "omni-${terraform.workspace}"
@@ -90,7 +83,7 @@ module "redis" {
   kube_config           = var.kube_config
   manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/database/redis"
   sealed_secrets_status = module.sealed-secrets.status  # Will only start when Sealed Secrets is ready
-  enabled               = terraform.workspace != "cloud"
+  count                 = terraform.workspace != "cloud" ? 1 : 0  # Skip Redis in cloud workspace
 }
 
 module "argocd" {

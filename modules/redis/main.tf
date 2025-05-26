@@ -40,5 +40,14 @@ resource "helm_release" "redis" {
   create_namespace  = true
   values            = [file("${var.manifests_dir}/values.yaml")]
   depends_on        = [var.sealed_secrets_status]
-  count             = var.enabled ? 1 : 0
+}
+
+data "kubectl_path_documents" "docs" {
+    pattern = "${var.manifests_dir}/(sealed-secrets|volume).yaml"
+}
+
+resource "kubectl_manifest" "redis" {
+    for_each    = data.kubectl_path_documents.docs.manifests
+    yaml_body   = each.value
+    depends_on  = [helm_release.redis]
 }
