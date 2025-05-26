@@ -29,6 +29,12 @@ variable "kube_env" {
   }
 }
 
+variable "enabled" {
+  description = "Set to false to disable a module"
+  type        = bool
+  default     = true
+}
+
 
 provider "kubernetes" {
   config_path    = var.kube_config
@@ -74,6 +80,17 @@ module "cert-manager" {
   kube_config           = var.kube_config
   manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/system/cert-manager"
   sealed_secrets_status = module.sealed-secrets.status  # Will only start when Sealed Secrets is ready
+}
+
+module "redis" {
+  source                = "./modules/redis"
+  software_version      = "8.0.1"
+  kube_env              = var.kube_env[terraform.workspace]
+  kube_context          = "omni-${terraform.workspace}"
+  kube_config           = var.kube_config
+  manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/database/redis"
+  sealed_secrets_status = module.sealed-secrets.status  # Will only start when Sealed Secrets is ready
+  enabled               = terraform.workspace != "cloud"
 }
 
 module "argocd" {
