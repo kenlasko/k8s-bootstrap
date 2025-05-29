@@ -88,7 +88,7 @@ module "redis" {
 
 module "argocd" {
   source                = "./modules/argocd"
-  software_version      = "8.0.11"
+  software_version      = "8.0.12"
   kube_env              = var.kube_env[terraform.workspace]
   kube_context          = "omni-${terraform.workspace}"
   kube_config           = var.kube_config
