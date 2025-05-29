@@ -55,24 +55,24 @@ module "cilium" {
   manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/network/cilium"
 }
 
-module "sealed-secrets" {
-  source                = "./modules/sealed-secrets"
-  software_version      = "2.5.12"
+module "external-secrets" {
+  source                = "./modules/external-secrets"
+  software_version      = "0.17.0"
   kube_env              = var.kube_env[terraform.workspace]
   kube_context          = "omni-${terraform.workspace}"
   kube_config           = var.kube_config
-  manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/system/sealed-secrets"
+  manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/system/external-secrets"
   cilium_status         = module.cilium.status   # Will only start when Cilium is ready
 }
 
 module "cert-manager" {
-  source                = "./modules/cert-manager"
-  software_version      = "v1.17.2"
-  kube_env              = var.kube_env[terraform.workspace]
-  kube_context          = "omni-${terraform.workspace}"
-  kube_config           = var.kube_config
-  manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/system/cert-manager"
-  sealed_secrets_status = module.sealed-secrets.status  # Will only start when Sealed Secrets is ready
+  source                  = "./modules/cert-manager"
+  software_version        = "v1.17.2"
+  kube_env                = var.kube_env[terraform.workspace]
+  kube_context            = "omni-${terraform.workspace}"
+  kube_config             = var.kube_config
+  manifests_dir           = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/system/cert-manager"
+  external_secrets_status = module.external-secrets.status  # Will only start when External Secrets Operator is ready
 }
 
 module "redis" {
@@ -83,7 +83,7 @@ module "redis" {
   kube_context          = "omni-${terraform.workspace}"
   kube_config           = var.kube_config
   manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/manifests/database/redis"
-  sealed_secrets_status = module.sealed-secrets.status  # Will only start when Sealed Secrets is ready
+  external_secrets_status = module.external-secrets.status  # Will only start when External Secrets Operator is ready
 }
 
 module "argocd" {
@@ -93,5 +93,5 @@ module "argocd" {
   kube_context          = "omni-${terraform.workspace}"
   kube_config           = var.kube_config
   manifests_dir         = "/home/ken/${var.kube_env[terraform.workspace]}/argocd"
-  sealed_secrets_status = module.sealed-secrets.status  # Will only start when Sealed Secrets is ready
+  external_secrets_status = module.external-secrets.status  # Will only start when External Secrets Operator is ready
 }

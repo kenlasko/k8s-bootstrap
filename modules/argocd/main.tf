@@ -24,7 +24,7 @@ variable "kube_env" {
 variable "kube_context" {
   type = string
 }
-variable "sealed_secrets_status" {
+variable "external_secrets_status" {
   type = string
 }
 variable "manifests_dir" {
@@ -55,7 +55,7 @@ resource "helm_release" "argocd" {
   namespace         = "argocd"
   create_namespace  = true
   values            = [file("${var.manifests_dir}/values.yaml")]
-  depends_on        = [ var.sealed_secrets_status, resource.kubectl_manifest.argocd_configmap ]
+  depends_on        = [ var.external_secrets_status, resource.kubectl_manifest.argocd_configmap ]
 }
 
 data "kubectl_path_documents" "docs" {

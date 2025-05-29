@@ -19,7 +19,7 @@ variable "kube_env" {
 variable "kube_context" {
   type = string
 }
-variable "sealed_secrets_status" {
+variable "external_secrets_status" {
   type = string
 }
 variable "manifests_dir" {
@@ -34,11 +34,11 @@ resource "helm_release" "redis" {
   namespace         = "redis"
   create_namespace  = true
   values            = [file("${var.manifests_dir}/values.yaml")]
-  depends_on        = [var.sealed_secrets_status]
+  depends_on        = [var.external_secrets_status]
 }
 
 data "kubectl_path_documents" "docs" {
-    pattern = "${var.manifests_dir}/(sealed-secrets|volume).yaml"
+    pattern = "${var.manifests_dir}/(external-secrets|volume).yaml"
 }
 
 resource "kubectl_manifest" "redis" {
